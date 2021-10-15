@@ -8,6 +8,7 @@ from Recommend_Web.location.models import Locations, LocationSerializer
 def getLocations(request):
     locations = list(Locations.objects.all().values())
     location_serializer = LocationSerializer(data=locations, many=True)
+    print(location_serializer)
     if location_serializer.is_valid():
         return JsonResponse(location_serializer.data, safe=False)
     return JsonResponse(location_serializer.errors, safe=False)
